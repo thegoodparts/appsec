@@ -29,7 +29,7 @@ class AuthController {
             URL refererURL = new URL(referer);
             String host = refererURL.getHost();
 
-            if (isReferrerHostAllowed(host)) {
+            if (isRefererHostWhitelisted(host)) {
                 response.sendRedirect(referer);
             } else {
                 log.warn("Invalid referer header, value {} does not match whitelist {}", referer, whitelistedReferers);
@@ -39,9 +39,9 @@ class AuthController {
         }
     }
 
-    private boolean isReferrerHostAllowed(String host) {
+    private boolean isRefererHostWhitelisted(String host) {
         return host != null && Arrays.stream(whitelistedReferers)
-                .anyMatch(allowedReferrer -> host.equals(allowedReferrer) || host.endsWith("." + allowedReferrer));
+                .anyMatch(whitelistedReferer -> host.equals(whitelistedReferer) || host.endsWith("." + whitelistedReferer));
     }
 
 }
