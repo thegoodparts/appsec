@@ -1,13 +1,8 @@
 package internal.appsec.validation.redirect.controller;
 
-import java.net.URL;
-import java.util.Arrays;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.assertj.core.util.VisibleForTesting;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,8 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 class AuthController {
 
-    @Value("${whitelisted-referers}")
-    @VisibleForTesting
+    // TODO Get whitelisted referers from application resources
     String[] whitelistedReferers;
 
     @PostMapping(value = "/logout")
@@ -32,25 +26,15 @@ class AuthController {
     }
 
     private void redirectToServiceHomePage(HttpServletRequest request, HttpServletResponse response) {
-        String referer = request.getHeader("referer");
+        // TODO Get referer header from request
+        String referer = "";
 
+        // TODO Redirect to referer only if whitelisted
         try {
-            URL refererURL = new URL(referer);
-            String host = refererURL.getHost();
-
-            if (isRefererHostWhitelisted(host)) {
-                response.sendRedirect(referer);
-            } else {
-                log.warn("Invalid referer header, value {} does not match whitelist {}", referer, whitelistedReferers);
-            }
+            response.sendRedirect(referer);
         } catch (Exception e) {
-            log.warn("Invalid referer header, value {} is not a valid URL. Exception: {}", referer, e.getMessage());
+            // TODO Add proper logging messages for any suspicious behaviour
         }
-    }
-
-    private boolean isRefererHostWhitelisted(String host) {
-        return host != null && Arrays.stream(whitelistedReferers)
-                .anyMatch(whitelistedReferer -> host.equals(whitelistedReferer) || host.endsWith("." + whitelistedReferer));
     }
 
 }
