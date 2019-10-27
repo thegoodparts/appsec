@@ -23,6 +23,15 @@ class AuthController {
 
     @PostMapping(value = "/logout")
     void logout(HttpServletRequest request, HttpServletResponse response) {
+        invalidateSession();
+        redirectToServiceHomePage(request, response);
+    }
+
+    private void invalidateSession() {
+        // Do nothing
+    }
+
+    private void redirectToServiceHomePage(HttpServletRequest request, HttpServletResponse response) {
         String referer = request.getHeader("referer");
 
         try {
