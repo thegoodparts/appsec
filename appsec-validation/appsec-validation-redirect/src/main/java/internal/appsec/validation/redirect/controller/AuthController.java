@@ -41,16 +41,19 @@ class AuthController {
             if (isRefererHostWhitelisted(host)) {
                 response.sendRedirect(referer);
             } else {
-                log.warn("Invalid referer header, value {} does not match whitelist {}", referer, whitelistedReferers);
+                log.warn("[AppSec] Invalid referer header, value {} does not match whitelist {}", referer,
+                        whitelistedReferers);
             }
         } catch (Exception e) {
-            log.warn("Invalid referer header, value {} is not a valid URL. Exception: {}", referer, e.getMessage());
+            log.warn("[AppSec] Invalid referer header, value {} is not a valid URL. Exception: {}", referer,
+                    e.getMessage());
         }
     }
 
     private boolean isRefererHostWhitelisted(String host) {
         return host != null && Arrays.stream(whitelistedReferers)
-                .anyMatch(whitelistedReferer -> host.equals(whitelistedReferer) || host.endsWith("." + whitelistedReferer));
+                .anyMatch(whitelistedReferer -> host.equals(whitelistedReferer) ||
+                        host.endsWith("." + whitelistedReferer));
     }
 
 }
