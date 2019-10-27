@@ -35,7 +35,7 @@ class AuthControllerTest {
     @BeforeEach
     void setUp() {
         authController = new AuthController();
-        authController.whitelistedReferers = new String[] { "owasp.org", "wikipedia.org" };
+        authController.whitelistedReferers = new String[] { "wikimedia.org", "wikipedia.org" };
     }
 
     @ParameterizedTest
