@@ -2,6 +2,12 @@
 
 ## Whitelisted referer
 
+```bash
+curl --request POST \
+  --url http://localhost:8080/logout \
+  --header 'referer: https://wikipedia.org'
+```
+
 ![AppSec Validation Redirect - Whitelisted](README/appsec-validation-redirect-whitelisted.png)
 
 ### Request
@@ -25,6 +31,12 @@
 ```
 
 ## Non-whitelisted referer
+
+```bash
+curl --request POST \
+  --url http://localhost:8080/logout \
+  --header 'referer: https://phishing.external'
+```
 
 ![AppSec Validation Redirect - Non-Whitelisted](README/appsec-validation-redirect-non-whitelisted.png)
 
