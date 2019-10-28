@@ -1,6 +1,6 @@
-# App Sec
+# AppSec: Application Security in Practice
 
-## Application Security Verification Standard
+## Application Security Verification Standard (ASVS)
 
 The [OWASP Application Security Verification Standard 4.0](https://github.com/OWASP/ASVS/blob/master/4.0/OWASP%20Application%20Security%20Verification%20Standard%204.0-en.json) (ASVS) Project provides a basis for testing web application technical security controls and also provides developers with a list of requirements for secure development:
 
@@ -21,5 +21,5 @@ The [OWASP Application Security Verification Standard 4.0](https://github.com/OW
 
 ## Branches
 
-- [challenges](../../tree/challenges): .
-- [master](../../tree/master): .
+- [master](../../tree/master): Modules with secure code for the different ASVS categories, including tests verifying the correct behavior.
+- [challenges](../../tree/challenges): Modules with vulnerable code, including tests that have to be fixed to make the code secure following a Test Driven Development (TDD) approach.
