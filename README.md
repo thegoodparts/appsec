@@ -60,6 +60,9 @@ This implementation will make some tests fail when the project is compiled:
 
 ```bash
 ➜  appsec-validation-redirect git:(challenges) mvn clean install
+```
+
+```bash
 [INFO] Results:
 [INFO]
 [ERROR] Failures:
