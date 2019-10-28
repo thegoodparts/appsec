@@ -26,7 +26,7 @@ The [OWASP Application Security Verification Standard 4.0](https://github.com/OW
 
 ## Challenges
 
-The following piece of code taken from [appsec-validation-redirect](appsec-validation-redirect) shows an unvalidated redirect vulnerability that is caused by a controller redirecting to a non-whitelisted referrer.
+The following piece of code taken from [appsec-validation-redirect](appsec-validation/appsec-validation-redirect) shows an unvalidated redirect vulnerability that is caused by a controller redirecting to a non-whitelisted referrer.
 
 ```java
 @RestController
