@@ -63,6 +63,7 @@ This implementation will make some tests fail when the project is compiled:
 ```
 
 ```bash
+...
 [INFO] Results:
 [INFO]
 [ERROR] Failures:
@@ -100,6 +101,7 @@ but was not.
 [ERROR]   AuthControllerTest.shouldLogoutAndNotRedirectToNonWhitelistedReferrers:66 » IllegalArgument
 [INFO]
 [ERROR] Tests run: 10, Failures: 5, Errors: 1, Skipped: 0
+...
 ```
 
 This set of tests, together with some TODO comments scattered through each module, should help fix the vulnerability and make the code secure.
