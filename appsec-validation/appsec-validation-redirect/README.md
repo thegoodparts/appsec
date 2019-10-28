@@ -1,4 +1,4 @@
-# App Sec. Validation. Redirect
+# appsec-validation-redirect
 
 ## Whitelisted referer
 
