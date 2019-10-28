@@ -104,4 +104,4 @@ but was not.
 ...
 ```
 
-This set of tests, together with some TODO comments scattered through each module, should help fix the vulnerability and make the code secure.
+This set of tests, together with some TODO comments scattered through each module, should help fix vulnerabilities and make code secure.
