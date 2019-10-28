@@ -66,41 +66,39 @@ This implementation will make some tests fail when the project is compiled:
 
 ```bash
 ...
-[INFO] Results:
-[INFO]
 [ERROR] Failures:
-[ERROR]   AuthControllerTest.shouldLogoutAndNotRedirectToNonWhitelistedReferrers:68
+[ERROR]   AuthControllerTest.shouldLogoutAndNotRedirectToNonWhitelistedReferrers:69
 Expecting:
- <"http://phishing.external/">
+ <302>
 to be equal to:
- <null>
+ <200>
 but was not.
-[ERROR]   AuthControllerTest.shouldLogoutAndNotRedirectToNonWhitelistedReferrers:68
+[ERROR]   AuthControllerTest.shouldLogoutAndNotRedirectToNonWhitelistedReferrers:69
 Expecting:
- <"http://phishing.external?referer=https://www.wikimedia.org/">
+ <302>
 to be equal to:
- <null>
+ <200>
 but was not.
-[ERROR]   AuthControllerTest.shouldLogoutAndNotRedirectToNonWhitelistedReferrers:68
+[ERROR]   AuthControllerTest.shouldLogoutAndNotRedirectToNonWhitelistedReferrers:69
 Expecting:
- <"http://phishing.externalwikimedia.org/">
+ <302>
 to be equal to:
- <null>
+ <200>
 but was not.
-[ERROR]   AuthControllerTest.shouldLogoutAndNotRedirectToNonWhitelistedReferrers:68
+[ERROR]   AuthControllerTest.shouldLogoutAndNotRedirectToNonWhitelistedReferrers:69
 Expecting:
- <" ">
+ <302>
 to be equal to:
- <null>
+ <200>
 but was not.
-[ERROR]   AuthControllerTest.shouldLogoutAndNotRedirectToNonWhitelistedReferrers:68
+[ERROR]   AuthControllerTest.shouldLogoutAndNotRedirectToNonWhitelistedReferrers:69
 Expecting:
- <"">
+ <302>
 to be equal to:
- <null>
+ <200>
 but was not.
 [ERROR] Errors:
-[ERROR]   AuthControllerTest.shouldLogoutAndNotRedirectToNonWhitelistedReferrers:66 » IllegalArgument
+[ERROR]   AuthControllerTest.shouldLogoutAndNotRedirectToNonWhitelistedReferrers:67 » IllegalArgument
 [INFO]
 [ERROR] Tests run: 10, Failures: 5, Errors: 1, Skipped: 0
 ...
