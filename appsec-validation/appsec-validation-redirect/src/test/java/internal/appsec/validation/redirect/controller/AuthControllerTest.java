@@ -45,6 +45,7 @@ class AuthControllerTest {
 
         authController.logout(request, response);
 
+        assertThat(response.getStatus()).isEqualTo(302);
         assertThat(response.getRedirectedUrl()).isEqualTo(referer);
     }
 
@@ -65,6 +66,7 @@ class AuthControllerTest {
 
         authController.logout(request, response);
 
+        assertThat(response.getStatus()).isEqualTo(200);
         assertThat(response.getRedirectedUrl()).isNull();
     }
 
