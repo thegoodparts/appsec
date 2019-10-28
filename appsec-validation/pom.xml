@@ -12,6 +12,12 @@
 
     <artifactId>appsec-validation</artifactId>
     <packaging>pom</packaging>
+
+    <modules>
+        <module>appsec-validation-injection-sql</module>
+        <module>appsec-validation-redirect</module>
+    </modules>
+
     <build>
         <plugins>
             <plugin>
@@ -20,8 +26,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <modules>
-        <module>appsec-validation-redirect</module>
-    </modules>
 </project>

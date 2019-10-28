@@ -18,6 +18,8 @@ The [OWASP Application Security Verification Standard 4.0](https://github.com/OW
 - appsec-malicious: Malicious Code Verification Requirements
 - appsec-session: Session Management Verification Requirements
 - [appsec-validation](appsec-validation): Validation, Sanitization and Encoding Verification Requirements
+    - [appsec-validation-injection-sql](appsec-validation/appsec-validation-injection-sql)
+    - [appsec-validation-redirect](appsec-validation/appsec-validation-redirect)
 
 ## Branches
 
