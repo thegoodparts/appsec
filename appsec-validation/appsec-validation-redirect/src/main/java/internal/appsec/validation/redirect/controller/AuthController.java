@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.SneakyThrows;
+
 @RestController
 class AuthController {
 
@@ -22,16 +24,12 @@ class AuthController {
         // Do nothing
     }
 
+    // TODO Add proper logging messages for any suspicious behaviour
+    @SneakyThrows
     private void redirectToServiceHomePage(HttpServletRequest request, HttpServletResponse response) {
-        // TODO Get referer header from request
-        String referer = "";
-
+        String referer = request.getHeader("referer");
         // TODO Redirect to referer only if whitelisted
-        try {
-            response.sendRedirect(referer);
-        } catch (Exception e) {
-            // TODO Add proper logging messages for any suspicious behaviour
-        }
+        response.sendRedirect(referer);
     }
 
 }
