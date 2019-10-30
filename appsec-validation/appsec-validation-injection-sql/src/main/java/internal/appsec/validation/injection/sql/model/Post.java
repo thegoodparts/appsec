@@ -1,12 +1,15 @@
 package internal.appsec.validation.injection.sql.model;
 
 import lombok.Builder;
+import lombok.Value;
 
 @Builder
-public class User {
+@Value
+public class Post {
 
     Integer id;
-    String username;
-    String email;
+    String slug;
+    String title;
+    String description;
 
 }
