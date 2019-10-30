@@ -1,9 +1,9 @@
 spring:
   datasource:
     driverClassName: org.h2.Driver
-    password: password
-    url: jdbc:h2:mem:database
-    username: sa
+    password: h,Y9RTV?=VJ!7zu=
+    url: jdbc:h2:mem:project
+    username: root
   h2:
     console:
       enabled: true
