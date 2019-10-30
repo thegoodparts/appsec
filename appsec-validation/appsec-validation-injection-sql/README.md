@@ -1,6 +1,22 @@
 # appsec-validation-injection-sql
 
+## Database model
+
 http://localhost:8080/h2-console/login.jsp?jsessionid=6350ae370854407184e14377bbff4db7
+
+```sql
+INSERT INTO users (id, username, email, password) VALUES
+  (1, 'admin', 'admin@site.internal', '(;C\b6Wva`9{:LYq'),
+  (2, 'user1', 'user1@site.external', '[P:n@dzG?LF"T*2W'),
+  (3, 'user2', 'user2@site.external', 'u_3AS8k%cxRN~u~q');
+```
+
+```sql
+INSERT INTO posts (id, slug, title, description) VALUES
+  (1, 'post-a', 'Post A', 'Description A'),
+  (2, 'post-b', 'Post B', 'Description B'),
+  (3, 'post-c', 'Post C', 'Description C');
+```
 
 ## Retrieve post by user
 
