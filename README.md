@@ -13,7 +13,7 @@ The [OWASP Application Security Verification Standard 4.0](https://github.com/OW
 - appsec-config: Configuration Verification Requirements
 - appsec-cryptography: Stored Cryptography Verification Requirements
 - appsec-data: Data Protection Verification Requirements
-- appsec:error: Error Handling and Logging Verification Requirements
+- appsec-error: Error Handling and Logging Verification Requirements
 - appsec-files: File and Resources Verification Requirements
 - appsec-malicious: Malicious Code Verification Requirements
 - appsec-session: Session Management Verification Requirements
