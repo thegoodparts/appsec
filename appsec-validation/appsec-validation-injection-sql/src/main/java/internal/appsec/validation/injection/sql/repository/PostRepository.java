@@ -38,24 +38,30 @@ public class PostRepository {
         // FIXME Use Spring JPA repository or prepareStatement instead of createStatement
         try (Connection connection = DriverManager.getConnection(url, user, password);
              Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT id, slug, title, description" +
+             ResultSet resultSet = statement.executeQuery(
+                     "SELECT id, slug, title, description" +
                      " FROM posts, user_posts" +
                      " WHERE posts.id = user_posts.post_id" +
                      " AND user_posts.user_id = " + currentUserId +
-                     " AND slug = '" + slug + "'")) {
+                     " AND slug = '" + slug + "'")
+        ) {
             while (resultSet.next()) {
-                posts.add(Post.builder()
-                        .id(resultSet.getInt("id"))
-                        .slug(resultSet.getString("slug"))
-                        .title(resultSet.getString("title"))
-                        .description(resultSet.getString("description"))
-                        .build());
+                posts.add(mapToPost(resultSet));
             }
         } catch (SQLException e) {
             log.error("Error reading post {} from database", slug, e);
         }
 
         return posts;
+    }
+
+    private Post mapToPost(ResultSet resultSet) throws SQLException {
+        return Post.builder()
+                .id(resultSet.getInt("id"))
+                .slug(resultSet.getString("slug"))
+                .title(resultSet.getString("title"))
+                .description(resultSet.getString("description"))
+                .build();
     }
 
 }
