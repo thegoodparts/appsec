@@ -11,7 +11,7 @@ import lombok.SneakyThrows;
 @RestController
 class AuthController {
 
-    // TODO Get whitelisted referers from application resources
+    // FIXME Get whitelisted referers from application resources
     String[] whitelistedReferers;
 
     @PostMapping(value = "/logout")
@@ -24,11 +24,11 @@ class AuthController {
         // Do nothing
     }
 
-    // TODO Add proper logging messages for any suspicious behaviour
+    // FIXME Add proper logging messages for any suspicious behaviour
     @SneakyThrows
     private void redirectToServiceHomePage(HttpServletRequest request, HttpServletResponse response) {
         String referer = request.getHeader("referer");
-        // TODO Redirect to referer only if whitelisted
+        // FIXME Redirect to referer only if whitelisted
         response.sendRedirect(referer);
     }
 
