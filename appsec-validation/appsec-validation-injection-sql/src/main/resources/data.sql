@@ -39,4 +39,4 @@ CREATE TABLE user_posts (
 INSERT INTO user_posts (user_id, post_id) VALUES
   (2, 1),
   (2, 2),
-  (3, 3)    ;
+  (3, 3);
