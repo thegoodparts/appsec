@@ -1,4 +1,6 @@
-package internal.appsec.validation.injection.sql.repository;
+package internal.appsec.validation.injection.sql.post;
+
+import static lombok.AccessLevel.PRIVATE;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,40 +11,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import internal.appsec.validation.injection.sql.model.Post;
+import internal.appsec.validation.injection.sql.db.DatabaseConfiguration;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
+@FieldDefaults(level = PRIVATE)
 @Repository
 @Slf4j
 public class PostRepository {
 
-    @Value("${spring.datasource.url}")
-    private String url;
-
-    @Value("${spring.datasource.username}")
-    private String user;
-
-    @Value("${spring.datasource.password}")
-    private String password;
+    @Autowired
+    DatabaseConfiguration databaseConfiguration;
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    JdbcTemplate jdbcTemplate;
 
     public List<Post> findBySlug(Integer currentUserId, String slug) {
         List<Post> posts = new ArrayList<>();
 
         // FIXME Use Spring JPA repository or prepareStatement instead of createStatement
-        try (Connection connection = DriverManager.getConnection(url, user, password);
+        try (Connection connection = DriverManager.getConnection(databaseConfiguration.getUrl(),
+                databaseConfiguration.getUser(), databaseConfiguration.getPassword());
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(
-                     "SELECT id, slug, title, description" +
-                     " FROM posts, user_posts" +
-                     " WHERE posts.id = user_posts.post_id" +
-                     " AND user_posts.user_id = " + currentUserId +
+                     "SELECT p.id AS id, p.slug AS slug, p.title AS title, p.description AS description" +
+                     " FROM posts p, user_posts up" +
+                     " WHERE p.id = up.post_id" +
+                     " AND up.user_id = " + currentUserId +
                      " AND slug = '" + slug + "'")
         ) {
             while (resultSet.next()) {
