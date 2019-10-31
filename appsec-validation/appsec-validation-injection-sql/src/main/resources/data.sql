@@ -40,3 +40,30 @@ INSERT INTO user_posts (user_id, post_id) VALUES
   (2, 1),
   (2, 2),
   (3, 3);
+
+DROP TABLE IF EXISTS categories;
+
+CREATE TABLE categories (
+  id INT AUTO_INCREMENT  PRIMARY KEY,
+  slug VARCHAR(250) NOT NULL,
+  name VARCHAR(250) NOT NULL
+);
+
+INSERT INTO categories (id, slug, name) VALUES
+  (1, 'category-a', 'Category A'),
+  (2, 'category-b', 'Category B');
+
+DROP TABLE IF EXISTS post_categories;
+
+CREATE TABLE post_categories (
+  post_id INT,
+  category_id INT,
+  PRIMARY KEY (post_id, category_id),
+  FOREIGN KEY (post_id) REFERENCES posts(id),
+  FOREIGN KEY (category_id) REFERENCES categories(id)
+);
+
+INSERT INTO post_categories (post_id, category_id) VALUES
+  (1, 2),
+  (2, 1),
+  (3, 2);

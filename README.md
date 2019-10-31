@@ -47,7 +47,7 @@ class AuthController {
         // Do nothing
     }
 
-    // TODO Add proper logging messages for any suspicious behaviour
+    // TODO Add proper logging categories for any suspicious behaviour
     @SneakyThrows
     private void redirectToServiceHomePage(HttpServletRequest request, HttpServletResponse response) {
         String referer = request.getHeader("referer");

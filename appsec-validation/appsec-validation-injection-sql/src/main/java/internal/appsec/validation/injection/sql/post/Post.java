@@ -1,4 +1,4 @@
-package internal.appsec.validation.injection.sql.model;
+package internal.appsec.validation.injection.sql.post;
 
 import lombok.Builder;
 import lombok.Value;
