@@ -1,4 +1,4 @@
-# AppSec: Application Security in Practice
+# The Good Parts: Application Security
 
 ## Application Security Verification Standard (ASVS)
 
