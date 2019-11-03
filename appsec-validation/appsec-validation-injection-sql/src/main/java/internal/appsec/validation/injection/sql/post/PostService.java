@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.experimental.FieldDefaults;
 
@@ -16,8 +17,9 @@ public class PostService {
     @Autowired
     PostRepository postRepository;
 
-    public List<Post> getPosts(Integer currentUserId, String slug) {
-        return postRepository.findBySlug(currentUserId, slug);
+    @Transactional
+    public List<Post> getPosts(String postSlug) {
+        return postRepository.findBySlug(postSlug);
     }
 
 }

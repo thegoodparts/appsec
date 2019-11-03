@@ -12,14 +12,15 @@
 
     <artifactId>appsec-validation</artifactId>
     <packaging>pom</packaging>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>12</source>
-                    <target>12</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -28,6 +29,7 @@
     <modules>
         <module>appsec-validation-injection-sql</module>
         <module>appsec-validation-redirect</module>
+        <module>appsec-validation-xml-external-entities</module>
     </modules>
 
 </project>

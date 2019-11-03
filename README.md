@@ -18,8 +18,9 @@ The [OWASP Application Security Verification Standard 4.0](https://github.com/OW
 - appsec-malicious: Malicious Code Verification Requirements
 - appsec-session: Session Management Verification Requirements
 - [appsec-validation](appsec-validation): Validation, Sanitization and Encoding Verification Requirements
-    - [appsec-validation-injection-sql](appsec-validation/appsec-validation-injection-sql)
-    - [appsec-validation-redirect](appsec-validation/appsec-validation-redirect)
+    - [appsec-validation-injection-sql](appsec-validation/appsec-validation-injection-sql): SQL Injection
+    - [appsec-validation-injection-xml-external-entities](appsec-validation/appsec-injection-validation-xml-external-entities): XML External Entities (XXE) Injection
+    - [appsec-validation-redirect](appsec-validation/appsec-validation-redirect): Unvalidated Redirects
 
 ## Branches
 
