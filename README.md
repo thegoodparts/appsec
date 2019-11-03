@@ -1,4 +1,4 @@
-# The Good Parts: Application Security
+# The Good Parts of Application Security
 
 ## Application Security Verification Standard (ASVS)
 
