@@ -12,12 +12,12 @@
     </parent>
 
     <groupId>internal.appsec</groupId>
-    <artifactId>appsec-java</artifactId>
+    <artifactId>appsec</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
-    <name>appsec-java</name>
-    <description>Application Security Java</description>
+    <name>appsec</name>
+    <description>Application Security</description>
 
     <modules>
         <module>appsec-validation</module>

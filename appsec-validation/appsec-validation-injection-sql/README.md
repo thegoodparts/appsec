@@ -1,8 +1,8 @@
-# appsec-validation-injection-sql
+# SQL Injection
 
 ## Context
 
-http://localhost:8080/h2-console/login.jsp?jsessionid=6350ae370854407184e14377bbff4db7
+Consider a webapp that stores information about users and posts in two different tables as it can be seen in the following two excerpts taken from [`data.sql`](src/main/resources/data.sql):
 
 ```sql
 INSERT INTO user (id, username, email, password) VALUES
@@ -18,9 +18,15 @@ INSERT INTO post (id, slug, title, description) VALUES
   (3, 'post-c', 'Post C', 'Description C');
 ```
 
-### Retrieve post by user
+More details about the structure of the database can be found in the [h2-console](http://localhost:8080/h2-console/login.jsp) when the app is run. To log in, just use the credentials specified at [`application.yaml`](`src/main/java/resources/application.yaml`):
 
-The following request would retrieve the categories written by 'user1' (id = 2) which have the value 'post-a' as slug:
+![h2-console-login.png](README/h2-console-login.png)
+
+![h2-console-table-user.png](README/h2-console-table-user.png)
+
+### Retrieving a post
+
+The details of a post with a certain slug `post-a` could be retrieved using a simple `GET` request:
 
 ```bash
 curl --request GET \
@@ -35,44 +41,48 @@ FROM posts
 WHERE slug = 'post-a'
 ```
 
-As it can be seen, the result is a simple list with the information of post 'post-a':
+As a result, the information returned by the REST endpoint would be a simple list with the details of post `post-a`:
 
 ![appsec-validation-injection-sql-retrieve-post-by-user.png](README/appsec-validation-injection-sql-retrieve-post-by-user.png)
 
 ## Vulnerability
 
-TODO Add screenshot from SonarQube.
+In order to understand this type of vulnerability, let's take a look at the code from [PostRepository.java](src/main/java/internal/appsec/validation/injection/sql/post/PostRepository.java) first:
 
 ```java
-    public List<Post> findBySlug(Integer currentUserId, String slug) {
-        List<Post> posts = new ArrayList<>();
+public List<Post> findBySlug(Integer currentUserId, String slug) {
+    List<Post> posts = new ArrayList<>();
 
-        // FIXME Use Spring JPA repository or prepareStatement instead of createStatement
-        try (Connection connection = DriverManager.getConnection(databaseConfiguration.getUrl(),
-                databaseConfiguration.getUser(), databaseConfiguration.getPassword());
-             PreparedStatement preparedStatement = connection.prepareStatement(
-                     "SELECT p.id AS id, p.slug AS slug, p.title AS title, p.description AS description" +
-                             " FROM posts p, user_posts up" +
-                             " WHERE p.id = up.post_id" +
-                             " AND up.user_id = ?" +
-                             " AND slug = ?"
-             )
-        ) {
-            preparedStatement.setInt(1, currentUserId);
-            preparedStatement.setString(2, slug);
-
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                while (resultSet.next()) {
-                    posts.add(mapToPost(resultSet));
-                }
-            }
-        } catch (SQLException e) {
-            log.error("Error reading post {} from database", slug, e);
+    // FIXME Use Spring JPA repository or prepareStatement instead of createStatement
+    try (Connection connection = DriverManager.getConnection(databaseConfiguration.getUrl(),
+            databaseConfiguration.getUser(), databaseConfiguration.getPassword());
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(
+                    "SELECT p.id AS id, p.slug AS slug, p.title AS title, p.description AS description" +
+                    " FROM posts p, user_posts up" +
+                    " WHERE p.id = up.post_id" +
+                    " AND up.user_id = " + currentUserId +
+                    " AND slug = '" + slug + "'")
+    ) {
+        while (resultSet.next()) {
+            posts.add(mapToPost(resultSet));
         }
-
-        return posts;
+    } catch (SQLException e) {
+        log.error("Error reading post {} from database", slug, e);
     }
+
+    return posts;
+}
 ```
+
+As it can be seen,, the repository is concatenating the slug of the post in the SQL query, which is vulnerable to SQL injection attacks.
+
+Taking a look at the information provided by SonarQube,
+
+TODO Add screenshot from SonarQube.
+
+
+## Exploit
 
 ### Retrieve all posts
 
@@ -94,9 +104,9 @@ WHERE slug = 'post-a'
 
 As a result, all categories stored in the database would be returned to the user:
 
-![appsec-validation-injection-sql-retrieve-all-categories.png](README/appsec-validation-injection-sql-retrieve-all-categories.png)
+![appsec-validation-injection-sql-retrieve-all-posts.png](README/appsec-validation-injection-sql-retrieve-all-posts.png)
 
-### Retrieve all users
+## Retrieve all users
 
 This type of attack could be used to even retrieve sensitive information about the users registered into the application, emails and passwords included:
 
