@@ -18,11 +18,13 @@ INSERT INTO post (id, slug, title, description) VALUES
   (3, 'post-c', 'Post C', 'Description C');
 ```
 
-More details about the structure of the database can be found in the [h2-console](http://localhost:8080/h2-console/login.jsp) when the app is run. To log in, just use the credentials specified at [`application.yaml`](`src/main/java/resources/application.yaml`):
-
-![h2-console-login.png](README/h2-console-login.png)
+More details about the structure of the database can be found in the [h2-console](http://localhost:8080/h2-console/login.jsp) when the app is run:
 
 ![h2-console-table-user.png](README/h2-console-table-user.png)
+
+To log in, just use the credentials specified at [`application.yaml`](`src/main/java/resources/application.yaml`):
+
+![h2-console-login.png](README/h2-console-login.png)
 
 ### Retrieving a post
 
