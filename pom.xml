@@ -24,7 +24,7 @@
     </modules>
 
     <properties>
-        <java.version>13</java.version>
+        <java.version>10</java.version>
     </properties>
 
     <dependencies>
