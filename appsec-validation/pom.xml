@@ -28,7 +28,6 @@
 
     <modules>
         <module>appsec-validation-injection-sql</module>
-        <module>appsec-validation-injection-xml-external-entities</module>
         <module>appsec-validation-redirect</module>
     </modules>
 

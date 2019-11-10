@@ -21,7 +21,6 @@ There is a total of 14 modules as defined in the [ASVS](https://github.com/OWASP
 - appsec-session: Session Management Verification Requirements
 - [`appsec-validation`](appsec-validation): Validation, Sanitization and Encoding Verification Requirements
     - [`appsec-validation-injection-sql`](appsec-validation/appsec-validation-injection-sql): SQL Injection
-    - [`appsec-validation-injection-xml-external-entities`](appsec-validation/appsec-injection-validation-xml-external-entities): XML External Entities (XXE) Injection - *WORK IN PROGRESS*
     - [`appsec-validation-redirect`](appsec-validation/appsec-validation-redirect): Unvalidated Redirects
 
 ## Challenges
