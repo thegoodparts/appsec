@@ -183,7 +183,7 @@ class PostRepository {
 }
 ```
 
-### Using custom queries
+### Using `JpaRepository` custom queries
 
 A simpler approach that would reduce the amount of code significantly would make use of the `JpaRepository` class provided by the Spring framework. In this case it would only be needed to specify the query template and the parameter placeholders (e.g. `?1`):
 
@@ -195,7 +195,7 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
 }
 ```
 
-### Using JpaRepository
+### Using `JpaRepository` default queries
 
 Finally, the most simple solution would make use of the default naming convention of `JpaRepository`. Since the query of this example is just retrieving the records by one of the fields of the table, defining a `findBySlug` method would be enough and the Spring framework would do the rest:
 
