@@ -12,19 +12,19 @@
     </parent>
 
     <groupId>internal.appsec</groupId>
-    <artifactId>appsec-java</artifactId>
+    <artifactId>appsec</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
-    <name>appsec-java</name>
-    <description>Application Security Java</description>
+    <name>appsec</name>
+    <description>Application Security</description>
 
     <modules>
         <module>appsec-validation</module>
     </modules>
 
     <properties>
-        <java.version>13</java.version>
+        <java.version>10</java.version>
     </properties>
 
     <dependencies>
@@ -52,8 +52,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>12</source>
-                    <target>12</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>

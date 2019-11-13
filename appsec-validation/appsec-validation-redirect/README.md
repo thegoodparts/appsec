@@ -1,4 +1,10 @@
-# appsec-validation-redirect
+# Unvalidated Redirects
+
+## Context
+
+## Vulnerability
+
+## Exploit
 
 ## Whitelisted referer
 
@@ -24,7 +30,7 @@ curl --request POST \
 ### Response
 
 ```yaml
-< HTTP/1.1 302 
+< HTTP/1.1 302
 < Location: https://wikipedia.org
 < Content-Length: 0
 < Date: Sun, 27 Oct 2019 19:42:33 GMT
@@ -54,7 +60,7 @@ curl --request POST \
 ### Response
 
 ```yaml
-< HTTP/1.1 200 
+< HTTP/1.1 200
 < Content-Length: 0
 < Date: Sun, 27 Oct 2019 19:45:51 GMT
 ```

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>internal.appsec</groupId>
-        <artifactId>appsec-java</artifactId>
+        <artifactId>appsec</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
@@ -12,14 +12,15 @@
 
     <artifactId>appsec-validation</artifactId>
     <packaging>pom</packaging>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>12</source>
-                    <target>12</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>

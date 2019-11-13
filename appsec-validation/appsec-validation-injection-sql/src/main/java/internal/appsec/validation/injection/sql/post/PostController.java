@@ -1,5 +1,6 @@
 package internal.appsec.validation.injection.sql.post;
 
+import static java.util.stream.Collectors.toList;
 import static lombok.AccessLevel.PRIVATE;
 
 import java.util.List;
@@ -19,10 +20,19 @@ public class PostController {
     PostService postService;
 
     @GetMapping("/posts/{slug}")
-    public List<Post> getPosts(@PathVariable("slug") String slug) {
-        // Imagine that the user is logged in and his id is 2
-        Integer currentUserId = 2;
-        return postService.getPosts(currentUserId, slug);
+    public List<PostDto> getPosts(@PathVariable("slug") String slug) {
+        return toPostDto(postService.getPosts(slug));
+    }
+
+    private List<PostDto> toPostDto(List<Post> posts) {
+        return posts.stream()
+                .map(post -> PostDto.builder()
+                        .id(post.getId())
+                        .slug(post.getSlug())
+                        .title(post.getTitle())
+                        .description(post.getDescription())
+                        .build())
+                .collect(toList());
     }
 
 }
