@@ -1,29 +1,18 @@
 package internal.appsec.validation.injection.sql.post;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.Builder;
+import lombok.Value;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-@Entity(name = "posts")
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
+@Builder
+@Value
 public class Post {
 
-    @Id
     Integer id;
 
-    @Column
     String slug;
 
-    @Column
     String title;
 
-    @Column
     String description;
 
 }
