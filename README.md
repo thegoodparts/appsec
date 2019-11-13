@@ -138,7 +138,7 @@ On the other hand, if the vulnerability is fixed, all tests will be green and th
 
 If you would like to contribute to this project, feel free to choose any vulnerability and submit a pull request following the same structure of the existing modules:
 
-- `REAMDE.md` with some context about the webapp, the vulnerability and how to explout it
+- `REAMDE.md` with some context about the webapp, the vulnerability, how to exploit it, and the secure code challenge
 - vulnerable webapp in the `challenges` branch
 - secure webapp in the `master` branch
 - set of tests to ensure that the webapp is not vulnerable anymore
