@@ -93,7 +93,6 @@ Apart from that, it provides some documentation regarding what is causing the vu
 
 ![appsec-validation-injection-sql-sonar-documentation.png](README/appsec-validation-injection-sql-sonar-documentation.png)
 
-
 ## Exploit
 
 ### Retrieve all posts
@@ -143,7 +142,7 @@ As it is shown in the following picture, the attacker would have access to all t
 
 ![appsec-validation-injection-sql-retrieve-all-users.png](README/appsec-validation-injection-sql-retrieve-all-users.png)
 
-## Secure code
+## Secure code challenge
 
 SQL injection vulnerability can be fixed in many different ways, and the best solution will mainly depend on the framework being used.
 
